@@ -5,7 +5,7 @@ import Nav from "./components/Navigation"
 function App() {
   return (
     <div>
-      <Nav />
+      <h1>fwfwafwfw</h1>
     </div>
   )
 }
