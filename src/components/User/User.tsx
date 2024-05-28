@@ -1,43 +1,36 @@
 import { useState } from "react";
 import "./User.css";
+import '../../BlockItems.css'
+import { useItemContext } from '../ItemContext';
+
 interface IProps {
-  createItem: {
-    nameItem: string;
-    description: string;
-    id: string;
-  }[];
   setselectBtn: (exit: boolean) => void;
 }
 
 const User = (props: IProps) => {
+  const { items } = useItemContext();
+  const [filterItem, setFilterItem] = useState<string>('');
+
   const handlerExit = () => {
     props.setselectBtn(true);
   };
 
-  const [ filterItem, setFilterItem ] = useState<string>('')
-
   const handlerFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterItem(e.target.value)
-  }
-
-  const filteredItems = props.createItem.filter((item) =>
-    item.nameItem.toLowerCase().startsWith(filterItem.toLowerCase())
-  );
+    setFilterItem(e.target.value);
+  };
 
   return (
     <div className="blockAppUser">
       <div className="filterBlock">
         <button onClick={handlerExit} className='Exit'>Выйти</button>
-        <input type="text" value={filterItem} onChange={handlerFilter} className="filterInput" placeholder="Найди предмет"/>
+        <input type="text" value={filterItem} onChange={handlerFilter} className="filterInput"/>
       </div>
       <div className="BlockItems">
-        {filteredItems.map((item, index) => (
-          <div className="block">
-            <div className="blockItem" key={index}>
-              <div>
-                <h1 className="titleItem">{item.nameItem}</h1>
-                <p>{item.description}</p>
-              </div>
+        {items.filter(item => item.nameItem.startsWith(filterItem)).map((item, index) => (
+          <div className="blockItem" key={index}>
+            <div>
+              <h1 className="titleItem">{item.nameItem}</h1>
+              <p>{item.description}</p>
             </div>
           </div>
         ))}

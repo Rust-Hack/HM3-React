@@ -1,18 +1,9 @@
 import { useState } from 'react';
 import './CreateItem.css';
+import { useItemContext } from '../../ItemContext';
 
-interface ItemType {
-  nameItem: string;
-  description: string;
-  id: string;
-}
-
-interface IProp {
-  setCreateItem: (newItem: ItemType) => void;
-  existingIds: string[];
-}
-
-const CreateItem = (props: IProp) => {
+const CreateItem = () => {
+  const { addItem, existingIds } = useItemContext();
   const [nameItem, setNameItem] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [id, setId] = useState<string>('');
@@ -45,12 +36,12 @@ const CreateItem = (props: IProp) => {
       return;
     }
 
-    if (props.existingIds.includes(id)) {
+    if (existingIds.includes(id)) {
       setUniqueIdError(true);
       return;
     }
 
-    props.setCreateItem({ nameItem, description, id });
+    addItem({ nameItem, description, id });
     setNameItem('');
     setDescription('');
     setId('');
