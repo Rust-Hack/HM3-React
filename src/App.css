@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 500px;
+}
+
+.BlockApp {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 400px;
+    padding: 50px 0;
+    background-color: rgb(189, 181, 181);
+}
+
+.BlockButtonChoose {
+    display: flex;
+    gap: 10px;
+}
+
+.BlockButtonChoose * {
+    width: 150px;
+    height: 50px;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    transition: background 20s;
+    border-radius: 10px;
+}
+
+.BlockButtonChoose *:active {
+    background-color: rgb(119, 34, 198);
+    transition: background 0s;
+}
+
+.Accept {
+    width: 150px;
+    height: 40px;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.Accept:hover {
+    background-color: rgb(59, 7, 108);
+}

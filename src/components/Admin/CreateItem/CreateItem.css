@@ -1,0 +1,27 @@
+.BlockCreate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 5px solid blueviolet;
+    padding: 10px;
+}
+
+.BlockCreateInput {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.BlockCreateInput * {
+    height: 20px;
+    width: 200px;
+}
+
+.createItem {
+    height: 50px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: blueviolet;
+}
